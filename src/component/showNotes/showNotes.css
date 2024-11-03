@@ -1,0 +1,194 @@
+:root {
+  --primary-color: #4a90e2; /* Blue for buttons and accents */
+  --secondary-color: #f5f5f5; /* Light background color */
+  --text-color: #333333; /* Dark text color */
+  --accent-color: #e94e77; /* Accent color for emphasis */
+  --progress-bg-color: #d5eafc; /* Light progress bar background */
+  --fill-bg-color: #4a90e2; /* Fill color for progress */
+  --font-family: 'Arial', sans-serif; /* Font family */
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--secondary-color);
+  margin: 0;
+  padding: 0;
+}
+
+/* Main container for show notes */
+.show-notes-container {
+  padding: 20px;
+}
+
+/* Progress note styles */
+.progress-note {
+  margin-bottom: 1.5em;
+}
+
+.progress-note p {
+  font-weight: bold;
+  color: var(--text-color);
+  font-size: 1.4em;
+}
+
+.progress-note p::first-letter {
+  text-transform: uppercase;
+  font-size: 1.6em; /* Slightly larger first letter */
+}
+
+.progress-note .progress-bar {
+  height: 6px; /* Slightly taller progress bar */
+  width: 100%;
+  background-color: var(--progress-bg-color);
+  margin-top: 0.6em;
+  position: relative;
+  border-radius: 5px; /* Rounded corners */
+}
+
+.progress-note .progress-bar .fill-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: var(--fill-bg-color);
+  width: var(--width-ProgressBar);
+  transition: width 0.5s ease;
+  height: 100%;
+  border-radius: 5px; /* Rounded corners */
+}
+
+/* Notes styles */
+.notes {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5em;
+}
+
+@media (min-width: 768px) {
+  .notes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5em; /* Increased gap for grid */
+  }
+}
+
+.not-notes {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2em;
+  padding: 1em;
+}
+
+.not-notes .title-not-notes {
+  color: var(--text-color);
+  opacity: 0.8; /* Slightly more opaque */
+  font-weight: bold; /* Bold title */
+  font-size: 1.8em; /* Larger font size */
+}
+
+.not-notes .title-not-notes::first-letter {
+  text-transform: uppercase;
+}
+
+.img-note {
+  width: 300px; /* Larger image */
+  height: 300px;
+  border-radius: 10px; /* Rounded corners */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+}
+
+/* Header and button styles */
+.header-category {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 3rem;
+  gap: 2em;
+}
+
+.add-note {
+  background: var(--primary-color);
+  border: none;
+  width: 10rem; /* Wider button */
+  padding: 0.8em;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s; /* Transition effects */
+}
+
+.add-note:hover {
+  background: var(--accent-color); /* Change color on hover */
+  transform: translateY(-2px); /* Lift effect on hover */
+}
+
+.icon-plus {
+  font-size: 1.5em; /* Larger icon */
+}
+
+/* Category styles */
+.category {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(5rem, 1fr));
+  gap: 0.5em 0;
+  text-transform: capitalize;
+  width: 100%;
+}
+
+.category .categories {
+  cursor: pointer;
+  position: relative;
+  padding: 0.5em 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  opacity: 0.8; /* More visible */
+  border-radius: 5px; /* Rounded edges */
+  transition: background 0.3s; /* Smooth background transition */
+}
+
+.category .categories:hover {
+  background: var(--primary-color); /* Background color on hover */
+  color: white; /* Change text color on hover */
+}
+
+.category .categories::before {
+  position: absolute;
+  content: "";
+  width: 8px; /* Slightly larger indicator */
+  height: 8px;
+  border-radius: 50%;
+  left: 50%;
+  top: 1.8rem;
+  transform: translateX(-50%);
+}
+
+.category .active {
+  color: white; /* Active category text color */
+}
+
+.category .home::before {
+  background: #ff9800; /* Different color for home */
+}
+
+.category .work::before {
+  background: #3f51b5; /* Different color for work */
+}
+
+.category .personal::before {
+  background: #4caf50; /* Different color for personal */
+}
+
+.category .all::before {
+  background: #2196f3; /* Different color for all */
+}
